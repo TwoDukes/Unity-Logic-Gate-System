@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 using System.Collections.Generic;
 
 public abstract class Gate : MonoBehaviour
@@ -54,6 +55,21 @@ public abstract class Gate : MonoBehaviour
 
     private void Next()
     {
+        if(GateManager.Instance?.stepTimeDelay > 0)
+        {
+            StartCoroutine(NextWithDelay());
+            return;
+        }
+
+        foreach (Gate gate in outputGates)
+        {
+            gate.Interact();
+        }
+    }
+
+    private IEnumerator NextWithDelay()
+    {
+        yield return new WaitForSeconds(GateManager.Instance.stepTimeDelay);
         foreach (Gate gate in outputGates)
         {
             gate.Interact();
@@ -62,7 +78,6 @@ public abstract class Gate : MonoBehaviour
 
     private void InitializeGates()
     {
-        
         foreach(Gate gate in inputGates)
         {
             gate.outputGates.Add(this);

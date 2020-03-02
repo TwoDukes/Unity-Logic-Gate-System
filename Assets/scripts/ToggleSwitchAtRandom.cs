@@ -23,6 +23,7 @@ public class ToggleSwitchAtRandom : MonoBehaviour
 
     IEnumerator ToggleSwitch()
     {
+        yield return new WaitForSeconds(0.1f);
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minDelay,maxDelay));
