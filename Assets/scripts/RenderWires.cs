@@ -15,18 +15,24 @@ public class RenderWires : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<Gate>()?.inputGates.Count == 0 || GetComponent<Gate>()?.inputGates.Count == null) return;
+        //if (GetComponent<Gate>()?.inputGates.Count == 0 || GetComponent<Gate>()?.inputGates.Count == null) return;
+
+        //foreach (Gate gate in GetComponent<Gate>().inputGates)
+        //{
+        //    inputGatePositions.Add(gate.transform.position);
+        //}
+
+        //foreach (Vector3 gatePos in inputGatePositions)
+        //{
+        //    Debug.DrawLine(transform.position, gatePos, Color.magenta, 0.01f, true);
+        //}
+
+        //inputGatePositions.Clear();
 
         foreach (Gate gate in GetComponent<Gate>().inputGates)
         {
-            inputGatePositions.Add(gate.transform.position);
+            Debug.DrawLine(transform.position, gate.transform.position, gate.ActiveState ? Color.green : Color.red, 0.01f, true);
         }
 
-        foreach (Vector3 gatePos in inputGatePositions)
-        {
-            Debug.DrawLine(transform.position, gatePos, Color.magenta, 0.01f, true);
-        }
-
-        inputGatePositions.Clear();
     }
 }
