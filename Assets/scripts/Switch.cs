@@ -13,8 +13,8 @@ public class Switch : Gate
         }
         else
         {
-            Interact();
-            Interact();
+           // Interact();
+           // Interact();
         }
     }
 

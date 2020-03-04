@@ -40,6 +40,7 @@ public abstract class Gate : MonoBehaviour
     // METHODS
     protected void Enable()
     {
+        if (_activeState == true) return;
         _previousState = _activeState;
         _activeState = true;
         onEnableEvents.Invoke();
@@ -47,6 +48,7 @@ public abstract class Gate : MonoBehaviour
     }
     protected void Disable()
     {
+        if (_activeState == false) return;
         _previousState = _activeState;
         _activeState = false;
         onDisableEvents.Invoke();
