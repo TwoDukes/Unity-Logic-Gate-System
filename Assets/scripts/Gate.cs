@@ -78,6 +78,7 @@ public abstract class Gate : MonoBehaviour
         }
     }
 
+    //TODO: Switch input/output gates for initialization
     private void InitializeGates()
     {
         foreach(Gate gate in inputGates)
